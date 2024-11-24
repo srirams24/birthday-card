@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -19,7 +20,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.util.packInts
 import com.example.happybirthday.ui.theme.HappyBirthdayTheme
 
 class MainActivity : ComponentActivity() {
@@ -61,9 +61,18 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) {
     val image = painterResource(R.drawable.androidparty)
-    Image(
-        painter = image, contentDescription = null
-    )
+    Box(modifier) {
+        Image(
+            painter = image, contentDescription = null
+        )
+        GreetingText(
+            message = "Happy Birthday Sriram!",
+            from = "From, Appa",
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(8.dp)
+        )
+    }
 }
 
 @Preview(showBackground = true)
